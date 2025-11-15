@@ -1,0 +1,5 @@
+{
+  "name": "Quiz Builder",
+  "description": "An application to extract multiple-choice questions from an image using AI. Upload an image of a quiz sheet, and the AI will extract the questions and options into an editable format, ready to be copied into a document.",
+  "requestFramePermissions": []
+}
