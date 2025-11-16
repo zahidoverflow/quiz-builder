@@ -20,19 +20,14 @@ try:
     import os
     import sys
     import requests
-    from concurrent.futures import Executor
     import urllib
     import signal
-    import sys
     import threading
     from urllib.parse import urlsplit
     import subprocess
     from urllib.parse import urlunsplit
-    import asyncio
-    from selenium.webdriver.chrome.service import Service
     import re
     import urllib.parse
-    import requests
     import urllib3
     from requests.adapters import HTTPAdapter
     from urllib3.util.retry import Retry
@@ -40,41 +35,38 @@ try:
     from prompt_toolkit.completion import PathCompleter
     from urllib.parse import urlparse
     from concurrent.futures import ThreadPoolExecutor, as_completed
-    from curses import panel
     import random
-    import re
-    from wsgiref import headers
     from colorama import Fore, Style, init
     from time import sleep
     from rich import print as rich_print
     from rich.panel import Panel
-    from rich.table import Table
     from urllib.parse import urlparse, parse_qs, urlencode, urlunparse, quote
-    from bs4 import BeautifulSoup
-    import urllib3
-    from prompt_toolkit import prompt
-    from prompt_toolkit.completion import PathCompleter
     import logging
-    from requests.adapters import HTTPAdapter
-    from urllib3.util.retry import Retry
-    import argparse
-    import concurrent.futures
     import time
-    import aiohttp
-    from selenium import webdriver
-    from selenium.webdriver.chrome.service import Service as ChromeService
-    from selenium.webdriver.common.by import By
-    from selenium.webdriver.chrome.options import Options
-    from selenium.webdriver.support.ui import WebDriverWait
-    from selenium.webdriver.support import expected_conditions as EC
-    from webdriver_manager.chrome import ChromeDriverManager
-    from urllib.parse import urlsplit, parse_qs, urlencode, urlunsplit
-    from rich.console import Console
-    from selenium.common.exceptions import TimeoutException, UnexpectedAlertPresentException
-    from functools import partial
-    from rich.text import Text
-    from queue import Queue
-    from threading import Lock
+    
+    # Selenium imports - only loaded when needed for XSS/OR scanners
+    try:
+        from selenium import webdriver
+        from selenium.webdriver.chrome.service import Service as ChromeService
+        from selenium.webdriver.common.by import By
+        from selenium.webdriver.chrome.options import Options
+        from selenium.webdriver.support.ui import WebDriverWait
+        from selenium.webdriver.support import expected_conditions as EC
+        from webdriver_manager.chrome import ChromeDriverManager
+        from selenium.common.exceptions import TimeoutException, UnexpectedAlertPresentException
+        from queue import Queue
+        from threading import Lock
+        SELENIUM_AVAILABLE = True
+    except ImportError:
+        SELENIUM_AVAILABLE = False
+        
+    # Optional imports for other scanners
+    try:
+        from bs4 import BeautifulSoup
+        import aiohttp
+        BS4_AVAILABLE = True
+    except ImportError:
+        BS4_AVAILABLE = False
 
     USER_AGENTS = [
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36",
