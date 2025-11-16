@@ -29,7 +29,7 @@ python main.py
 
 ### Target URL
 ```
-https://quiz-builder-ocr.vercel.app/api/read-file
+https://quiz-builder-ocr.vercel.app/api/read-file?file=
 ```
 
 ### Payloads File

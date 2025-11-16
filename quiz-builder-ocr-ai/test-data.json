@@ -1,0 +1,11 @@
+{
+  "test": "This is a test file to demonstrate LFI vulnerability",
+  "vulnerability": "Local File Inclusion",
+  "status": "VULNERABLE",
+  "message": "If you can read this, the application has an LFI vulnerability!",
+  "confidential_data": {
+    "api_keys": "sk-test-1234567890",
+    "database": "postgresql://user:pass@localhost/db",
+    "admin_email": "admin@example.com"
+  }
+}
