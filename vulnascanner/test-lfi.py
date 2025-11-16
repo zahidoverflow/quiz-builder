@@ -12,11 +12,11 @@ print("=" * 60)
 
 # Test payloads
 test_cases = [
-    ("package.json", "Should find package.json in current directory"),
-    ("../package.json", "Should traverse up one directory"),
-    ("../../package.json", "Should traverse up two directories"),
-    ("vercel.json", "Should find vercel.json"),
-    ("README.md", "Should find README.md"),
+    ("../../../proc/version", "Linux kernel version"),
+    ("../../../etc/passwd", "System password file"),
+    ("../../../etc/hosts", "System hosts file"),
+    ("../../../proc/self/environ", "Process environment variables"),
+    ("../../../proc/cpuinfo", "CPU information"),
 ]
 
 vulnerable_count = 0

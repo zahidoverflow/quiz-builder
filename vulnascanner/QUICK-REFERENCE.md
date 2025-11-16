@@ -39,7 +39,7 @@ payloads/lfi-payloads.txt
 
 ### Success Criteria
 ```
-"name":,"version":,"dependencies":
+"success":true,"content"
 ```
 
 ### Threads
