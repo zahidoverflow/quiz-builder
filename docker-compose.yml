@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  # Quiz Builder Web Application
+  quiz-app:
+    build:
+      context: ./quiz-builder-ocr-ai
+      dockerfile: ../Dockerfile.quiz-app
+    container_name: quiz-builder-app
+    restart: unless-stopped
+    ports:
+      - "5173:5173"
+    environment:
+      - API_KEY=${API_KEY}
+      - NODE_ENV=${NODE_ENV:-development}
+    volumes:
+      - ./quiz-builder-ocr-ai:/app
+      - /app/node_modules
+    networks:
+      - quiz-network
+    command: npm run dev
+
+  # N8N Workflow Automation
+  n8n:
+    image: n8nio/n8n:latest
+    container_name: quiz-n8n
+    restart: unless-stopped
+    ports:
+      - "${N8N_PORT:-5678}:5678"
+    environment:
+      - N8N_BASIC_AUTH_ACTIVE=true
+      - N8N_BASIC_AUTH_USER=${N8N_BASIC_AUTH_USER:-admin}
+      - N8N_BASIC_AUTH_PASSWORD=${N8N_BASIC_AUTH_PASSWORD:-changeme}
+      - N8N_HOST=${N8N_HOST:-localhost}
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=${N8N_PROTOCOL:-http}
+      - NODE_ENV=${NODE_ENV:-production}
+      - WEBHOOK_URL=${WEBHOOK_URL:-http://localhost:5678/}
+      - API_KEY=${API_KEY}
+    volumes:
+      - ./n8n/data:/home/node/.n8n
+      - ./n8n/workflows:/home/node/.n8n/workflows
+    networks:
+      - quiz-network
+
+networks:
+  quiz-network:
+    driver: bridge

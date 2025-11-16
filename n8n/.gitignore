@@ -1,0 +1,13 @@
+# N8N data directory
+data/
+
+# Credentials (never commit)
+credentials/*.json
+!credentials/README.md
+
+# Logs
+*.log
+
+# Environment variables
+.env
+.env.local

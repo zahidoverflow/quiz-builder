@@ -24,6 +24,9 @@ build/
 .env.production.local
 .env*.local
 
+# Docker volumes
+n8n/data/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

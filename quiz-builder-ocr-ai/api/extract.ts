@@ -61,6 +61,17 @@ export default async function handler(
     Analyze the provided image of a multiple-choice question sheet.
     Extract all the questions, along with their corresponding options (A, B, C, D).
     If the correct answer is indicated in the image (e.g., by being bolded, underlined, circled, or otherwise marked), identify and extract the correct answer letter (A, B, C, or D).
+    
+    IMPORTANT FORMATTING RULES:
+    - Options must use uppercase letters (A, B, C, D) with dot format only (A. B. C. D.) — no brackets or parentheses.
+    - Options format should be flexible based on length:
+      * For short options: Use inline format (A. … B. … C. … D. …)
+      * For longer options: Use line breaks for better readability (A. … B. …  C. … D. …)
+      * For very long options: Place each option on a separate line
+    - Correct spelling errors (Bangla + English).
+    - Fix broken words, line breaks, merged words.
+    - Convert Bangla numerals to English numerals (01, 02, 03…).
+    
     The questions can be in English or Bengali. Preserve the original language and text exactly as it appears.
     Return the data in the specified JSON format. Do not include the question numbers in the 'question' text.
   `;
