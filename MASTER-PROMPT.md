@@ -1,4 +1,4 @@
-### PROJECT: Class 6 Quiz Bank Generator  
+### PROJECT: Quiz Bank Generator  
 ### SUBJECT: [SUBJECT NAME]  
 ### CHAPTER: [CHAPTER NAME]  
 ### SOURCE: MCQ images provided  
@@ -13,6 +13,9 @@ Process all MCQ questions from the attached images:
 [IMAGES]
 
 Extract everything that looks like an MCQ:
+- Analyze the provided image of a multiple-choice question sheet.
+- Extract all the questions, along with their corresponding options (A, B, C, D).
+- If the correct answer is indicated in the image (e.g., by being bolded, underlined, circled, or otherwise marked), identify and extract the correct answer letter (A, B, C, or D).
 - Question (can be in English or Bengali)
 - Options (Bangla OR English)
 - Numbers
