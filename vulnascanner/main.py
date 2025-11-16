@@ -146,13 +146,14 @@ try:
 
     def display_menu():
         title = r"""
-    __    __________   _____                                 
-   / /   / ____/  _/  / ___/_________ _____  ____  ___  _____
-  / /   / /_   / /    \__ \/ ___/ __ `/ __ \/ __ \/ _ \/ ___/
- / /___/ __/ _/ /    ___/ / /__/ /_/ / / / / / / /  __/ /    
-/_____/_/   /___/   /____/\___/\__,_/_/ /_/_/ /_/\___/_/     
+     ██████╗██╗   ██╗██████╗ ███████╗██████╗     ███████╗███████╗ ██████╗██╗   ██╗██████╗ ██╗████████╗██╗   ██╗
+    ██╔════╝╚██╗ ██╔╝██╔══██╗██╔════╝██╔══██╗    ██╔════╝██╔════╝██╔════╝██║   ██║██╔══██╗██║╚══██╔══╝╚██╗ ██╔╝
+    ██║      ╚████╔╝ ██████╔╝█████╗  ██████╔╝    ███████╗█████╗  ██║     ██║   ██║██████╔╝██║   ██║    ╚████╔╝ 
+    ██║       ╚██╔╝  ██╔══██╗██╔══╝  ██╔══██╗    ╚════██║██╔══╝  ██║     ██║   ██║██╔══██╗██║   ██║     ╚██╔╝  
+    ╚██████╗   ██║   ██████╔╝███████╗██║  ██║    ███████║███████╗╚██████╗╚██████╔╝██║  ██║██║   ██║      ██║   
+    ╚═════╝   ╚═╝   ╚═════╝ ╚══════╝╚═╝  ╚═╝    ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝   ╚═╝      ╚═╝   
     """
-        print(Color.GREEN + Style.BRIGHT + title)
+        print(Color.GREEN + Style.BRIGHT + title.center(72))
         print(Fore.WHITE + Style.BRIGHT + "─" * 72)
         border_color = Color.CYAN + Style.BRIGHT
         option_color = Fore.WHITE + Style.BRIGHT  
@@ -160,8 +161,12 @@ try:
         print(border_color + "┌" + "─" * 72 + "┐")
         
         options = [
-            "1] LFI Scanner - Test Local File Inclusion Vulnerabilities",
-            "2] Exit"
+            "1] LFi Scanner",
+            "2] OR Scanner",
+            "3] SQLi Scanner",
+            "4] XSS Scanner",
+            "5] CRLF Scanner",
+            "6] Exit"
         ]
         
         for option in options:
@@ -2147,10 +2152,26 @@ try:
 
         elif selection == '2':
             clear_screen()
+            run_or_scanner()
+
+        elif selection == '3':
+            clear_screen()
+            run_sql_scanner()
+
+        elif selection == '4':
+            clear_screen()
+            run_xss_scanner()
+
+        elif selection == '5':
+            clear_screen()
+            run_crlf_scanner()
+
+        elif selection == '6':
+            clear_screen()
             print_exit_menu()
 
         else:
-            print(Fore.RED + "[!] Invalid option. Please select 1 or 2.")
+            print(Fore.RED + "[!] Invalid option. Please select 1-6.")
             time.sleep(2)
 
     stop_event = threading.Event()
@@ -2163,7 +2184,7 @@ try:
         while scan_running:
             try:
                 display_menu()
-                choice = input(f"\n{Fore.CYAN}[?] Select an option (1-2): {Style.RESET_ALL}").strip()
+                choice = input(f"\n{Fore.CYAN}[?] Select an option (1-6): {Style.RESET_ALL}").strip()
                 handle_selection(choice)
             except KeyboardInterrupt:
                 print_exit_menu()
