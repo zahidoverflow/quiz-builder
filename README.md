@@ -1,6 +1,89 @@
-# Quiz Builder - OCR AI
+# Quiz Builder - Security Testing Laboratory
 
-An intelligent quiz extraction application that uses Google's Gemini AI to extract multiple-choice questions from images. Perfect for digitizing paper-based quiz sheets into editable, copyable text format.
+A comprehensive **security testing framework** demonstrating professional application security assessment using:
+- **Quiz Builder OCR AI** - Modern web application (Target Application)
+- **VulnaScanner** - Advanced vulnerability scanner (Security Testing Tool)
+
+This repository showcases a complete security testing laboratory environment where automated vulnerability assessments are performed on a production-grade web application.
+
+---
+
+## 🎯 Project Purpose
+
+This project serves as a **Security Testing Lab** demonstrating:
+- ✅ Real-world vulnerability scanning
+- ✅ Automated security assessment
+- ✅ DevSecOps integration
+- ✅ Professional security reporting
+- ✅ Application security best practices
+
+**Perfect for**: Security presentations, penetration testing demos, DevSecOps showcases
+
+---
+
+## 🏗️ Lab Architecture
+
+```
+┌─────────────────────────────────────────────────────────┐
+│           QUIZ BUILDER SECURITY LAB                      │
+├─────────────────────────────────────────────────────────┤
+│                                                           │
+│  ┌─────────────────────┐    ┌────────────────────┐     │
+│  │  TARGET APP         │◄───┤  SECURITY TOOL     │     │
+│  │                     │    │                    │     │
+│  │  Quiz Builder       │    │  VulnaScanner      │     │
+│  │  OCR AI             │    │  - LFI Testing     │     │
+│  │                     │    │  - SQLi Testing    │     │
+│  │  • React Frontend   │    │  - XSS Testing     │     │
+│  │  • Vercel API       │    │  - CRLF Testing    │     │
+│  │  • Gemini AI        │    │  - OR Testing      │     │
+│  │  • File Upload      │    │  - HTML Reports    │     │
+│  └─────────────────────┘    └────────────────────┘     │
+│                                                           │
+└─────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 📁 Repository Structure
+
+```
+quiz-builder/
+├── 🎯 TARGET APPLICATION
+│   └── quiz-builder-ocr-ai/          # Web application under test
+│       ├── src/                       # React + TypeScript source
+│       ├── api/                       # Serverless API functions
+│       ├── components/                # UI components
+│       ├── services/                  # Backend services
+│       └── DEPLOYMENT.md              # Deployment guide
+│
+├── 🔍 SECURITY TESTING TOOL
+│   └── vulnascanner/                  # Vulnerability scanner
+│       ├── main.py                    # Scanner engine (2196 lines)
+│       ├── payloads/                  # Attack payload library
+│       │   ├── lfi.txt               # LFI payloads (50+)
+│       │   ├── xss.txt               # XSS payloads (100+)
+│       │   ├── sqli/                 # SQLi payloads (200+)
+│       │   └── ...
+│       ├── chromedriver-linux64/      # Selenium driver
+│       └── README_DETAILED.md         # Tool documentation
+│
+├── 📚 DOCUMENTATION
+│   ├── README.md                      # This file
+│   ├── SECURITY_LAB.md                # Complete lab guide
+│   ├── SECRET_MANAGEMENT.md           # Security practices
+│   └── DEPLOYMENT.md                  # Deployment instructions
+│
+└── ⚙️ CONFIGURATION
+    ├── .gitignore                     # Git exclusions
+    └── .env.example                   # Environment template
+```
+
+---
+
+## 🎯 Target Application: Quiz Builder OCR AI
+
+An intelligent quiz extraction application that uses Google's Gemini AI to extract multiple-choice questions from images and PDFs. Perfect for digitizing paper-based quiz sheets into editable, copyable text format.
 
 ## Features
 
