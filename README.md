@@ -1,168 +1,73 @@
-# Quiz Builder - OCR AI
+# N8N Automation for Quiz Builder
 
-An intelligent quiz extraction application that uses Google's Gemini AI to extract multiple-choice questions from images. Perfect for digitizing paper-based quiz sheets into editable, copyable text format.
+This repository contains N8N workflow automation for the Quiz Bank Generator project.
 
-## Features
+## Quick Start
 
-- 📸 **Image Upload**: Upload images of quiz sheets (supports JPEG, PNG)
-- 🤖 **AI-Powered OCR**: Utilizes Google Gemini 2.5 Flash for accurate text extraction
-- 🌐 **Multilingual Support**: Preserves original language (English, Bengali, etc.)
-- ✏️ **Editable Results**: Edit extracted questions and options
-- 📋 **Copy to Clipboard**: Quick copy functionality for all questions
-- 🎨 **Modern UI**: Clean, responsive design with dark mode support
+1. **Setup Environment:**
+   ```bash
+   cp .env.example .env
+   # Edit .env with your credentials
+   ```
+
+2. **Start N8N with Docker:**
+   ```bash
+   docker-compose up -d
+   ```
+
+3. **Access N8N:**
+   - URL: http://localhost:5678
+   - Username: admin
+   - Password: changeme (or your custom password from .env)
 
 ## Project Structure
 
 ```
-quiz-builder/
-├── quiz-builder-ocr-ai/          # Main application
-│   ├── src/
-│   │   ├── components/           # React components
-│   │   ├── services/             # API services
-│   │   └── types.ts              # TypeScript types
-│   ├── api/                      # Vercel serverless functions
-│   ├── .env.example              # Environment variables template
-│   ├── .env.local                # Local environment (not committed)
-│   └── SECRET_MANAGEMENT.md      # Security guide
-├── .gitignore                    # Git ignore rules
-└── README.md                     # This file
+├── workflows/          # N8N workflow JSON exports
+├── credentials/        # Credential configuration templates  
+├── nodes/             # Custom node definitions
+├── data/              # N8N data persistence
+├── docker-compose.yml # Container orchestration
+└── .env              # Environment variables
 ```
 
-## Setup Instructions
+## Workflows
 
-### Prerequisites
+Import workflows from the `workflows/` directory into your N8N instance:
 
-- Node.js 18+ and npm
-- Google Gemini API key ([Get one here](https://ai.google.dev/gemini-api))
+1. Open N8N web interface
+2. Click "Import from File"
+3. Select workflow JSON files from `workflows/`
 
-### Installation
+## Environment Variables
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/zahidoverflow/quiz-builder.git
-   cd quiz-builder/quiz-builder-ocr-ai
-   ```
+Required variables (copy from `.env.example`):
 
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
-
-3. **Configure environment variables:**
-   ```bash
-   copy .env.example .env.local
-   ```
-   
-   Edit `.env.local` and add your Gemini API key:
-   ```env
-   API_KEY=your_actual_gemini_api_key_here
-   ```
-
-4. **Start development server:**
-   ```bash
-   npm run dev
-   ```
-
-5. **Open your browser:**
-   Navigate to `http://localhost:5173`
-
-## Usage
-
-1. Click the upload area or drag & drop an image of a quiz sheet
-2. Click "Generate Quiz Bank" to process the image
-3. Review and edit the extracted questions if needed
-4. Add or remove questions as desired
-5. Click "Copy All" to copy formatted questions to clipboard
-6. Click "Start Over" to process a new image
-
-## Deployment
-
-### Vercel (Recommended)
-
-1. **Push your code to GitHub**
-2. **Import project in Vercel**:
-   - Set **Root Directory** to `quiz-builder-ocr-ai`
-   - Framework Preset: Vite
-   - Build Command: `npm run build`
-   - Output Directory: `dist`
-3. **Add environment variable**:
-   - Go to Project Settings → Environment Variables
-   - Name: `API_KEY`
-   - Value: Your Gemini API key
-   - Apply to: Production, Preview, Development
-4. **Deploy**
-
-**Note**: For monorepo structure, it's crucial to set the root directory to `quiz-builder-ocr-ai` in Vercel project settings.
-
-### Manual Build
-
-```bash
-npm run build
-npm run preview
-```
+- `N8N_BASIC_AUTH_USER`: N8N username
+- `N8N_BASIC_AUTH_PASSWORD`: N8N password  
+- `API_KEY`: Google Gemini API key
+- `WEBHOOK_URL`: Webhook base URL
 
 ## Security
 
-⚠️ **Important**: Never commit your `.env.local` file or expose your API keys.
+⚠️ **Never commit actual credentials to version control**
 
-See [SECRET_MANAGEMENT.md](./quiz-builder-ocr-ai/SECRET_MANAGEMENT.md) for detailed security guidelines.
+- Use `.env` for local development
+- Use proper secret management for production
+- Credential files are gitignored by default
 
-## Technologies Used
+## Integration with Quiz Builder
 
-- **Frontend**: React 18, TypeScript, Vite
-- **AI Service**: Google Gemini 2.5 Flash API
-- **Deployment**: Vercel
-- **Styling**: Tailwind CSS (via CDN)
+This N8N setup can automate:
 
-## API Reference
+- Image processing workflows
+- Quiz extraction pipelines
+- Data validation and formatting
+- API integrations with external services
+- Scheduled tasks and monitoring
 
-The application uses the Google Gemini API with structured output:
+## Support
 
-```typescript
-interface Quiz {
-  id: number;
-  question: string;
-  options: {
-    A: string;
-    B: string;
-    C: string;
-    D: string;
-  };
-}
-```
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## Troubleshooting
-
-**"API_KEY environment variable is not set"**
-- Ensure `.env.local` exists with `API_KEY` variable
-- Restart the dev server after creating/modifying `.env.local`
-
-**Image processing fails**
-- Check image quality and clarity
-- Ensure questions are clearly visible
-- Verify API key is valid and has quota remaining
-
-**Build errors**
-- Run `npm install` to ensure all dependencies are installed
-- Check Node.js version (18+ required)
-
-## License
-
-MIT License - see LICENSE file for details
-
-## Author
-
-**Zahid** - [@zahidoverflow](https://github.com/zahidoverflow)
-
-## Acknowledgments
-
-- Powered by [Google Gemini API](https://ai.google.dev/gemini-api)
-- Built with [Vite](https://vitejs.dev/) and [React](https://react.dev/)
+For issues related to:
+- N8N setup: Check the official [N8N documentation](https://docs.n8n.io/)
+- Quiz Builder integration: See main project repository
