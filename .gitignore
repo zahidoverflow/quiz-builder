@@ -34,6 +34,11 @@ n8n/data/
 !.vscode/tasks.json
 !.vscode/launch.json
 .idea
+
+# Google Drive sync files (Windows)
+desktop.ini
+
+# OS files
 .DS_Store
 *.suo
 *.ntvs*
