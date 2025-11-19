@@ -16,10 +16,14 @@ credentials/*.pem
 !credentials/README.md
 !credentials/*.template.json
 
+# Google Drive sync files (Windows)
+desktop.ini
+.DS_Store
+Thumbs.db
+
 # OS files
 .DS_Store
 Thumbs.db
-desktop.ini
 
 # IDE
 .vscode/
