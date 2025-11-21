@@ -1,6 +1,12 @@
 # N8N data directory
 data/
 
+# File processing directories
+files/input/*
+!files/input/README.md
+files/output/*
+!files/output/README.md
+
 # Environment files
 .env
 .env.local

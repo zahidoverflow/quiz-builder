@@ -27,6 +27,9 @@ This repository contains N8N workflow automation for the Quiz Bank Generator pro
 ├── credentials/        # Credential configuration templates  
 ├── nodes/             # Custom node definitions
 ├── data/              # N8N data persistence
+├── files/             # File processing directories
+│   ├── input/         # Images for OCR processing
+│   └── output/        # Extracted quiz results
 ├── docker-compose.yml # Container orchestration
 └── .env              # Environment variables
 ```
@@ -60,11 +63,21 @@ Required variables (copy from `.env.example`):
 
 This N8N setup can automate:
 
-- Image processing workflows
-- Quiz extraction pipelines
-- Data validation and formatting
-- API integrations with external services
-- Scheduled tasks and monitoring
+- **Image processing workflows** - OCR from quiz images
+- **Quiz extraction pipelines** - Automated question parsing  
+- **File monitoring** - Auto-process new images in `files/input/`
+- **Data validation and formatting** - Ensure proper JSON structure
+- **Batch processing** - Handle multiple images simultaneously
+- **API integrations** with external services
+- **Scheduled tasks and monitoring**
+
+### File Processing Workflow
+
+1. **Upload Images**: Place quiz images in `files/input/`
+2. **Auto Processing**: N8N monitors folder and processes new files
+3. **OCR Extraction**: Uses Google Gemini for text recognition
+4. **Quiz Parsing**: Extracts questions, options, and answers
+5. **Save Results**: Formatted JSON saved to `files/output/`
 
 ## Support
 
