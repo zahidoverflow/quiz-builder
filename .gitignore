@@ -38,6 +38,10 @@ n8n/data/
 # Google Drive sync files (Windows)
 desktop.ini
 
+# N8N data and directories (from n8n branch)
+data/
+n8n/
+
 # OS files
 .DS_Store
 *.suo
